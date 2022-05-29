@@ -11,6 +11,7 @@ echo "Minecraft server installation"
 echo ""
 echo "This script install the followings."
 echo ""
+echo "openjdk-18-jre-headless (by apt)"
 echo "/var/lib/minecraft"
 echo "/etc/systemd/system/minecraft@.service"
 echo ""
@@ -28,12 +29,13 @@ echo "Installing minecraft service..."
 mkdir -p /var/lib/minecraft
 cp minecraft@.service /etc/systemd/system/
 systemctl daemon-reload
+apt update && apt install openjdk-18-jre-headless
 
 echo ""
 echo "You can also install minecord."
 echo "This will install the followings."
 echo ""
-echo "npm"
+echo "npm (by apt)"
 echo "minecord (by npm)"
 echo "/etc/systemd/system/minecord@.service"
 echo ""
