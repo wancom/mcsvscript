@@ -2,6 +2,11 @@
 
 set -eu
 
+if [[ `id -u` -ne 0 ]]; then
+  echo "Please run as root"
+  exit 1
+fi
+
 echo "Minecraft server installation"
 echo ""
 echo "This script install the followings."
@@ -13,7 +18,7 @@ printf "Do you continue?[Y/n]: "
 
 read ANS
 
-if [ "$ANS" != "" && "$ANS" != "y" && "$ANS" != "Y" ]; then
+if [ "$ANS" != "" -a "$ANS" != "y" -a "$ANS" != "Y" ]; then
   echo "Abort."
   exit 0
 fi
@@ -36,7 +41,7 @@ printf "Do you want to install minecord?[y/N]: "
 
 read ANS
 
-if [ "$ANS" == "y" && "$ANS" == "Y" ]; then
+if [ "$ANS" == "y" -o "$ANS" == "Y" ]; then
   echo "Installing minecord..."
   apt install -y npm
   npm -g install minecord
