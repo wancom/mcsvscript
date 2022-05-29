@@ -1,0 +1,12 @@
+[Unit]
+Description=Minecraft server
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/minecraft/%i
+ExecStart=/usr/bin/java -Xmx3072M -Xms3072M -jar /var/lib/minecraft/%i/server.jar nogogui
+Restart=on-failure
+
+[Install]
+WantedBy = multi-user.target

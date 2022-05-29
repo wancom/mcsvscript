@@ -1,0 +1,12 @@
+[Unit]
+Description=Minecraft server
+After=minecraft@%i.service
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/minecraft/%i
+ExecStart=/usr/local/bin/minecord --config /var/lib/minecraft/%i/minecord.json
+Restart=on-failure
+
+[Install]
+WantedBy = multi-user.target
