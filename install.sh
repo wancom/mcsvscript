@@ -43,7 +43,7 @@ read ANS
 
 if [ "$ANS" == "y" -o "$ANS" == "Y" ]; then
   echo "Installing minecord..."
-  apt install -y npm
+  apt update && apt install -y npm
   npm -g install minecord
   cp minecord@.service /etc/systemd/system/
   systemctl daemon-reload
