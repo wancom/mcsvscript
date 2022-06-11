@@ -12,7 +12,10 @@ echo ""
 echo "This script install the followings."
 echo ""
 echo "openjdk-18-jre-headless (by apt)"
+echo "screen (by apt)"
 echo "/var/lib/minecraft"
+echo "/var/lib/minecraft/scripts/start.sh"
+echo "/var/lib/minecraft/scripts/stop.sh"
 echo "/etc/systemd/system/minecraft@.service"
 echo ""
 printf "Do you continue?[Y/n]: "
@@ -26,10 +29,12 @@ fi
 
 echo ""
 echo "Installing minecraft service..."
-mkdir -p /var/lib/minecraft
+mkdir -p /var/lib/minecraft/scripts
+cp start.sh /var/lib/minecraft/scripts/
+cp stop.sh /var/lib/minecraft/scripts/
 cp minecraft@.service /etc/systemd/system/
 systemctl daemon-reload
-apt update && apt install openjdk-18-jre-headless
+apt update && apt install screen openjdk-18-jre-headless
 
 echo ""
 echo "You can also install minecord."

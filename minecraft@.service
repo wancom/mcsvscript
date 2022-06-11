@@ -3,9 +3,10 @@ Description=Minecraft server
 After=network-online.target
 
 [Service]
-Type=simple
+Type=forking
 WorkingDirectory=/var/lib/minecraft/%i
-ExecStart=/usr/bin/java -Xmx3072M -Xms3072M -jar /var/lib/minecraft/%i/server.jar nogogui
+ExecStart=/var/lib/minecraft/scripts/start.sh "%i"
+ExecStop=/var/lib/minecraft/scripts/stop.sh "%i"
 Restart=on-failure
 
 [Install]
